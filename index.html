@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="An interactive demonstration of CI/CD concepts for machine learning operations.">
+  <title>ML CI/CD Lab | Thesis Demo</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#home"><span class="brand-mark">ML</span><span>CI/CD Lab</span></a>
+    <nav><a href="#pipeline">Pipeline</a><a href="#playground">Try the demo</a><a href="#about">About</a></nav>
+  </header>
+  <main>
+    <section class="hero" id="home">
+      <div class="eyebrow"><span class="pulse"></span> THESIS DEMONSTRATION PROJECT</div>
+      <h1>From code change<br><span>to reliable ML delivery.</span></h1>
+      <p class="hero-copy">A small, practical website demonstrating how Continuous Integration and Continuous Delivery/Deployment can help teams test, package, and release machine-learning applications reliably.</p>
+      <div class="hero-actions"><a class="button primary" href="#pipeline">Explore the pipeline <span>↘</span></a><a class="button secondary" href="#playground">Run the interactive demo</a></div>
+      <div class="hero-note"><span class="status-dot"></span> Static demo · Automated checks · GitHub Pages deployment</div>
+      <div class="hero-card">
+        <div class="card-top"><span>Example pipeline status</span><span class="pill"><span class="status-dot"></span> SIMULATED</span></div>
+        <div class="pipeline-mini"><div class="mini-step done"><b>✓</b><span>Code</span></div><i></i><div class="mini-step done"><b>✓</b><span>Test</span></div><i></i><div class="mini-step done"><b>✓</b><span>Build</span></div><i></i><div class="mini-step live"><b>↗</b><span>Deploy</span></div></div>
+        <p class="sim-note">Illustration only — actual workflow results are shown in the GitHub Actions tab.</p>
+      </div>
+    </section>
+
+    <section class="section" id="pipeline">
+      <div class="section-heading"><div><div class="eyebrow">01 / THE WORKFLOW</div><h2>Six steps. One repeatable process.</h2></div><p>In a real project, each stage is automated or triggered by a change, with checks before release.</p></div>
+      <div class="steps">
+        <article class="step"><div class="step-num">01</div><div class="step-icon">⌘</div><h3>Commit code</h3><p>A developer updates the site or ML application and pushes the change to GitHub.</p><span class="tag">Git + GitHub</span></article>
+        <article class="step"><div class="step-num">02</div><div class="step-icon">✓</div><h3>Run CI checks</h3><p>GitHub Actions runs automated checks to catch broken files or regressions early.</p><span class="tag">Continuous Integration</span></article>
+        <article class="step"><div class="step-num">03</div><div class="step-icon">◈</div><h3>Validate the model</h3><p>An ML pipeline can check input shape, prediction format, and evaluation metrics.</p><span class="tag">ML validation</span></article>
+        <article class="step"><div class="step-num">04</div><div class="step-icon">▣</div><h3>Package</h3><p>Build a release artifact or container so the app can run in a consistent environment.</p><span class="tag">Artifact / Docker</span></article>
+        <article class="step"><div class="step-num">05</div><div class="step-icon">⇧</div><h3>Deploy</h3><p>After checks pass, publish the tested website to GitHub Pages.</p><span class="tag">Continuous Delivery</span></article>
+        <article class="step"><div class="step-num">06</div><div class="step-icon">◉</div><h3>Monitor</h3><p>In production, observe errors, latency, input drift, and model quality when labels are available.</p><span class="tag">Monitoring</span></article>
+      </div>
+      <div class="callout"><strong>Important ML distinction</strong><span>Passing software tests does not prove a model is accurate. ML systems also need data checks and model-quality evaluation. Retraining is a separate process called Continuous Training (CT).</span></div>
+    </section>
+
+    <section class="section playground-section" id="playground">
+      <div class="section-heading"><div><div class="eyebrow">02 / INTERACTIVE PLAYGROUND</div><h2>What happens when a check fails?</h2></div><p>Change the example test result to see how a gated pipeline should behave.</p></div>
+      <div class="playground">
+        <div class="playground-controls">
+          <label for="test-result">Automated test result</label>
+          <select id="test-result"><option value="pass">Pass — all checks succeed</option><option value="fail">Fail — a test finds a bug</option></select>
+          <label for="model-score">Example validation score</label>
+          <input id="model-score" type="range" min="50" max="100" value="92">
+          <div class="score-row"><span>Validation score</span><strong id="score-value">92%</strong></div>
+          <label for="threshold">Minimum required score</label>
+          <select id="threshold"><option value="80">80%</option><option value="90" selected>90%</option><option value="95">95%</option></select>
+          <button class="button primary full" id="run-pipeline">Run simulated pipeline</button>
+          <p class="small-note">These are illustrative values, not results from a trained model.</p>
+        </div>
+        <div class="pipeline-output" aria-live="polite">
+          <div class="output-title"><span>Pipeline report</span><span id="result-badge" class="result-badge">READY</span></div>
+          <div id="pipeline-steps" class="output-steps">
+            <div class="output-step"><span class="output-icon">1</span><span>Code checks</span><b>Waiting</b></div>
+            <div class="output-step"><span class="output-icon">2</span><span>Model-quality gate</span><b>Waiting</b></div>
+            <div class="output-step"><span class="output-icon">3</span><span>Deploy website</span><b>Waiting</b></div>
+          </div>
+          <div id="pipeline-message" class="pipeline-message">Select inputs and run the simulation to see the release decision.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="section-heading"><div><div class="eyebrow">03 / CONCEPTS</div><h2>CI, CD, and CT are different.</h2></div></div>
+      <div class="concept-grid">
+        <article><span class="concept-letter">CI</span><h3>Continuous Integration</h3><p>Frequently integrate code changes and automatically test them. Goal: find defects early.</p></article>
+        <article><span class="concept-letter">CD</span><h3>Continuous Delivery / Deployment</h3><p>Prepare tested changes for release; deployment may require approval or happen automatically.</p></article>
+        <article><span class="concept-letter">CT</span><h3>Continuous Training</h3><p>Retrain a model when a configured trigger occurs, then evaluate it before promotion.</p></article>
+      </div>
+      <div class="footer-note"><strong>Scope of this implementation</strong><p>This repository demonstrates a real CI workflow that validates the website and a CD workflow that publishes it to GitHub Pages. The model-quality panel is a front-end simulation; it does not train or evaluate an actual ML model.</p></div>
+    </section>
+  </main>
+  <footer><span>ML CI/CD Lab · Thesis demo</span><span>Built to demonstrate automated testing and deployment</span></footer>
+  <script src="script.js"></script>
+</body>
+</html>
