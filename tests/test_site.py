@@ -27,7 +27,7 @@ class WebsiteSmokeTests(unittest.TestCase):
         script = (ROOT / "script.js").read_text(encoding="utf-8")
         self.assertIn("DEPLOYMENT BLOCKED", script)
         self.assertIn("GATES PASSED", script)
-        self.assertIn("model-quality gate", script)
+        self.assertIn("Model-quality gate", script)
 
 
 if __name__ == "__main__":
