@@ -1,0 +1,135 @@
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #eef2f7;
+    color: #1f2937;
+    min-height: 100vh;
+}
+
+.container {
+    width: 90%;
+    max-width: 850px;
+    margin: 40px auto;
+    text-align: center;
+}
+
+header {
+    margin-bottom: 30px;
+}
+
+header h1 {
+    color: #1d4ed8;
+    font-size: 32px;
+    margin-bottom: 12px;
+}
+
+header p {
+    color: #64748b;
+    line-height: 1.6;
+}
+
+.recognition-panel,
+.result-panel {
+    background: white;
+    padding: 28px;
+    margin-bottom: 24px;
+    border-radius: 14px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+#drawingCanvas {
+    display: block;
+    margin: 0 auto 20px;
+    background: black;
+    border: 3px solid #cbd5e1;
+    border-radius: 8px;
+    cursor: crosshair;
+    touch-action: none;
+    max-width: 100%;
+    height: auto;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 22px;
+}
+
+button {
+    border: none;
+    padding: 12px 22px;
+    border-radius: 8px;
+    background: #2563eb;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #1d4ed8;
+}
+
+#clearButton {
+    background: #64748b;
+}
+
+#clearButton:hover {
+    background: #475569;
+}
+
+.upload-section {
+    margin-top: 15px;
+    line-height: 2;
+}
+
+#imageUpload {
+    display: block;
+    margin: 10px auto;
+    max-width: 100%;
+}
+
+#result {
+    font-size: 22px;
+    font-weight: bold;
+    color: #1d4ed8;
+    margin: 15px 0;
+}
+
+#confidence {
+    color: #64748b;
+}
+
+footer {
+    color: #64748b;
+    font-size: 13px;
+    line-height: 1.8;
+    padding: 15px;
+}
+
+@media (max-width: 600px) {
+    .container {
+        width: 94%;
+        margin: 20px auto;
+    }
+
+    header h1 {
+        font-size: 25px;
+    }
+
+    .recognition-panel,
+    .result-panel {
+        padding: 18px;
+    }
+}
