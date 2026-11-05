@@ -1,5 +1,5 @@
 
-name: Website CI and CD
+name: ML Application CI and CD
 
 on:
   push:
@@ -14,13 +14,14 @@ permissions:
   id-token: write
 
 concurrency:
-  group: "pages"
+  group: pages
   cancel-in-progress: true
 
 jobs:
   test:
-    name: CI - Validate website
+    name: CI - Test Website and ML Application
     runs-on: ubuntu-latest
+
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
@@ -30,30 +31,30 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Run automated smoke tests
+      - name: Run automated Python tests
         run: python -m unittest discover -s tests -v
 
-      - name: Check required website assets
-  run: |
-    test -s index.html
-    test -s styles.css
-    test -s script.js
+      - name: Check required website files
+        run: |
+          test -s index.html
+          test -s styles.css
+          test -s script.js
 
-- name: Check digit recognition application files
-  run: |
-    test -s digit-recognition/index.html
-    test -s digit-recognition/styles.css
-    test -s digit-recognition/script.js
+      - name: Check digit recognition application files
+        run: |
+          test -s digit-recognition/index.html
+          test -s digit-recognition/styles.css
+          test -s digit-recognition/script.js
 
-- name: Set up Node.js
-  uses: actions/setup-node@v4
-  with:
-    node-version: "22"
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
 
-- name: Check JavaScript syntax
-  run: |
-    node --check script.js
-    node --check digit-recognition/script.js
+      - name: Check JavaScript syntax
+        run: |
+          node --check script.js
+          node --check digit-recognition/script.js
 
   deploy:
     name: CD - Publish to GitHub Pages
@@ -63,6 +64,7 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
