@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Handwritten Digit Recognition</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/onnxruntime-web/dist/ort.min.js"></script>
+</head>
+
+<body>
+    <main class="container">
+        <header>
+            <h1>Handwritten Digit Recognition</h1>
+            <p>Draw a digit from 0 to 9 and let the machine learning model recognise it.</p>
+        </header>
+
+        <section class="recognition-panel">
+            <h2>Draw Your Digit</h2>
+
+            <canvas id="drawingCanvas" width="280" height="280"></canvas>
+
+            <div class="controls">
+                <button id="clearButton">Clear</button>
+                <button id="predictButton">Recognise Digit</button>
+            </div>
+
+            <div class="upload-section">
+                <label for="imageUpload">Or upload an image:</label>
+                <input type="file" id="imageUpload" accept="image/*">
+            </div>
+        </section>
+
+        <section class="result-panel">
+            <h2>Prediction Result</h2>
+            <p id="result">Your prediction will appear here.</p>
+            <div id="confidence"></div>
+        </section>
+
+        <footer>
+            <p>Powered by a pretrained MNIST machine learning model.</p>
+            <p>ML CI/CD Thesis Demonstration</p>
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
